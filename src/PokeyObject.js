@@ -3,7 +3,7 @@
  */
 
 /**
- * @example unknownFunction(new PokeyObject().obj)
+ * @example unknownFunction(new PokeyObject())
  *
  * @author Merlin2v
  * @class for testing what a object wants
