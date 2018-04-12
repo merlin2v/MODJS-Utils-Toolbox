@@ -12,16 +12,13 @@
   /** @constructor
   * @param {*} [base={}] - the objects values 
   */
-PokeyObject(base){
-  super();
-  this.handler = {
-    get(target, property) {
+function PokeyObject(base){
+  var handler = {
+    get:function(target, property) {
       if (property in target) {
         return target[property];
-      }
-      throw new Error(`wants Property '${property}'`);
+      }else throw new Error(`wants Property '${property}'`);
     }
   };
-  this.base=base||{};
-  this.obj=new Proxy(this.base,this.handler);
+	return new Proxy((base||{}),handler);
 };
