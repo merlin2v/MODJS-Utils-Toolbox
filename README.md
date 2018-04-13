@@ -44,7 +44,7 @@ A collection of Utilitys for JavaScript. Designed to allow for Debugging as well
              unknownFunction(new PockeyObject({foo:{}}))//throws "Uncaught Error: wants Property 'bar'"
          ```
          and continue this until you have filled in all the values
- * **MapperObject** - if `PockyObject` is to slow for you then there is `MapperObject` which tests what a object wants and prints the trails of undefined vars to the console
+   * **MapperObject** - if `PockyObject` is to slow for you then there is `MapperObject` which tests what a object wants and prints the trails of undefined vars to the console
       * Example:
          ```javascript
             unknownFunction(new MapperObject("top"))
@@ -60,7 +60,7 @@ A collection of Utilitys for JavaScript. Designed to allow for Debugging as well
          ```javascript
              unknownFunction(new MapperObject({foo:{bar:{baz:{qux:{}}}}}))//prints only: function done!!
          ```
-* **CartographerObject** - if you don't want to implement the entire thing then you can use `CartographerObject` which is for testing what a object wants and prints the undefined vars to the console unless logKnownProperties is specified(then it prints all vars out);
+   * **CartographerObject** - if you don't want to implement the entire thing then you can use `CartographerObject` which is for testing what a object wants and prints the undefined vars to the console unless logKnownProperties is specified(then it prints all vars out);
       * Example:
          ```javascript
             unknownFunction(new CartographerObject("top"));
@@ -74,7 +74,7 @@ A collection of Utilitys for JavaScript. Designed to allow for Debugging as well
          ```
          if you have some of the variables defined and have `logKnownProperties` as true then it will log `'foo' wants ' bar '`
 
-* **Cartographer** - `CartographerObject` is usefull however it can, at times, be disorientating. for that we have the `Cartographer`. this is for testing what a object wants and it can print all vars to the console in groups as well as a object representation.
+   * **Cartographer** - `CartographerObject` is usefull however it can, at times, be disorientating. for that we have the `Cartographer`. this is for testing what a object wants and it can print all vars to the console in groups as well as a object representation.
       * Example:
          ```javascript
             var c;
