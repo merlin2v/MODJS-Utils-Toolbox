@@ -89,3 +89,9 @@ A collection of Utilitys for JavaScript. Designed to allow for Debugging as well
             */
          ```
          if you have some of the variables defined and have `logKnownProperties` as true then it will log `'foo' wants ' bar '`
+         
+  ##Importing
+  
+  to import you can use:
+  https://rawgit.com/
+  to import code
