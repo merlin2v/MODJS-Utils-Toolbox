@@ -17,7 +17,8 @@ header h1:not(:only-child){
 	
 }
 header h1 ~ h2{
-	display:inline;
+	display:block;
+	width:100px;
 	margin-left:5px;
 	margin-top:0;
 	margin-right:5px;
