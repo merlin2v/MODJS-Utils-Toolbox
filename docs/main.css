@@ -1,0 +1,85 @@
+header h1::before{
+	content:"merlin2v's";
+	font-size:0.3em;
+	display:block;
+	margin-left:-5px;
+	line-height: 0.1em;
+}
+header h1{
+	display:inline-block;
+	background:#fff;
+	margin-left:20px;
+	padding:10px;
+	border:solid;
+}
+header h1:not(:only-child){
+	margin-bottom:0px;
+	
+}
+header h1 ~ h2{
+	display:inline;
+	margin-left:5px;
+	margin-top:0;
+	margin-right:5px;
+	padding:2px 10px;
+	padding-top:0px;
+	border:solid;
+	border-top:none;
+}
+header h1 ~ h2:first-of-type{
+	margin-left:26px;
+}
+header h1 ~ h2:first-of-type{
+	margin-left:26px;
+}
+header h1 ~ h2:last-child{
+	margin-right:50%;
+}
+header{
+	background:#eeeeee;
+	padding:10px;
+	border-bottom:solid;
+	position:fixed;
+	position:sticky;
+	margin-left:0;
+	margin-right:0;
+	left:0;
+	right:0;
+}
+footer{
+	background:#444;
+	padding:10px;
+	color: white;
+	border-top:solid 1px #000;
+	margin-top:10px;
+	height:content-fill;
+	position:fixed;
+	bottom:0px;
+	display:block;
+	margin:0px;
+	left:0;
+	right:0;
+	//width:100%;
+}
+article{
+	margin:10px;
+	padding:10px;
+}
+article input{
+	margin-bottom:10px;
+}
+
+body{
+	display:flex;
+	flex-direction: column;
+	background:#FAFAFA;
+	margin:0;
+}
+output{
+	border:solid grey 1px;
+	background:white;
+	display:block;
+	height: auto;
+	padding:3px 10px;
+	margin:5px;
+}
