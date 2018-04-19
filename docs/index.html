@@ -1,1 +1,83 @@
-<h1></h1>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>MODJS Utils Toolbox</title>
+	</head>
+	<body>
+
+		<header>
+			<div>
+				<h1>MODJS Utils Toolbox</h1>
+				<h2>Selector</h2>
+			</div>
+
+		</header>
+		<nav></nav>
+		<article>
+			<section>
+				<h1>Select A File:</h1>
+				<script>getlink= (x,g,b)=>{
+						if(!b.value.endsWith(".js")||!g.value){return;}
+						var a=((g.value==1)?'https://rawgit.com/merlin2v/MODJS-Utils-Toolbox/master/src/':'https://merlin2v.github.io/MODJS-Utils-Toolbox/')+b.value;
+						x.innerHTML=`<a href="${a}">${a}</a>`;
+						if(g.value==2){
+							x.innerHTML=`<a href="${a}">${a}</a>`;
+						}
+						x.value=a;
+					}</script>
+					<form id="form" onchange="getlink(x,g,b)"
+								oninput="getlink(x,g,b)">
+						<formset id="a">
+							<input type="radio" value="1" name="g">Dev<br>
+							<input type="radio" value="2" name="g">Production
+						</formset>
+						<script>
+							getstuff= function(username){
+								var me = document.getElementById("b");
+								me.innerHTML=("<span>Querying GitHub for " + username +"s repositories...</span>");
+								var list = document.getElementById('b');
+								var func = function(l=list){
+											//console.log("FUNC CALLED");
+											return function(data){
+												//console.log("INNER FUNC CALLED");
+											data.forEach(function(e) {
+												var add;
+												if(e.type==="dir"){
+													add = document.createElement('optgroup');
+													add.label = e.name;
+													//console.log(e.url);
+													fetch(e.url)
+														.then(r => r.json()).then(func(add));
+												}else{
+													
+													add = document.createElement('option');
+													add.value = e.name;
+													add.innerText = e.name;
+												}
+												l.append(add);
+											});
+										};
+										};
+								var a=fetch('https://api.github.com/repos/merlin2v/MODJS-Utils-Toolbox/contents/src')
+									.then(r => r.json())
+									.then((func(list)));
+								//console.log(a);
+							}
+							//getstuff()
+						</script>
+						<select type="" id="b" value="50" list="data" onload="getstuff('merlin2v')"> id="data" onload="getstuff()">
+							<option value="Internet Explorer">
+						</select>
+						<script>getstuff()</script><br/>
+						<hr/>
+						<output name="x" for="a b">&nbsp;</output>
+					</form>
+				</section>
+		</article>
+		<footer>
+			&nbsp;
+		</footer>
+	</body>
+</html>
