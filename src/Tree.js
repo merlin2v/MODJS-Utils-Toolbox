@@ -1,4 +1,4 @@
-export default {Tree};
+//export default {Tree};
 var log=true;
 var handlerc3 = {
 	apply(target, thisArg, argumentsList) {
@@ -153,7 +153,7 @@ var handlerc3 = {
 		}catch(e){console.log("err:"+e);return new Tree();};
 	}
 };
-function Tree(obj=(()=>{
+export default function Tree(obj=(()=>{
 	var d=()=>{return new Tree();};
 	this[Symbol.iterator]=function() {
 		return new Tree();
