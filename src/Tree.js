@@ -1,3 +1,4 @@
+export default {Tree};
 var log=true;
 var handlerc3 = {
 	apply(target, thisArg, argumentsList) {
