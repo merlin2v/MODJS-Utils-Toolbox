@@ -1,3 +1,24 @@
+_MOD_PACK_MOD_TYPE_={
+	setFunc(text,target){
+		return {type:"set",text:text,owner:target};
+	},
+	insert(text,search,func){
+		return {type:"insert","text":text,"find":search,owner:func};
+	},
+	inserta(text,search,func){
+		return {type:"inserta","text":text,"find":search,owner:func};
+	},
+	replacer(text,search,func){
+		return {type:"replacer",text:text,find:search,owner:func};
+	},
+	replace(text,search,func){
+		return {type:"replace",text:text,find:search,owner:func};
+	},
+	wrap(text1,text2,search,func){
+		return {type:"wrap",text1:text1,text2:text2,find:search,owner:func};
+	}
+}
+
 function install(package){
 	var pack=package,
 		name=pack.name.toUpperCase()),
