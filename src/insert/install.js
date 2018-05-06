@@ -8,8 +8,8 @@ function install(package){
 	if(typeof installed === "undefined"){
 		installed=[];
 	}
-	if(!world.installed[name]){
-		world.installed[name]=pack;
+	if(!installed[name]){
+		installed[name]=pack;
 	}else{
 		throw new Error('Pack Already Installed');
 	}
@@ -70,4 +70,103 @@ function install(package){
 		}
 		//i+=1;
 	}
+}
+function uninstall(package){
+	var name,funcs,pack;
+	pack=package;
+	name= pack.name = pack.name.toUpperCase());
+	funcs=pack.funcs;
+	var targets,start,end,mid;
+	targets=pack.funcs.map(obj=>obj.owner);
+	if(typeof installed === "undefined"){
+		installed=[];
+	}
+	if(!installed[name]){
+		installed[name]=pack;
+	}
+	if(typeof installed[name]!="undefined"){
+	}else{
+		throw new Error('Pack Not Installed')
+	}
+	start=["/***||","START","-",name,"||***/"].join("");
+	end=["/***||","END","-",name,"||***/"].join("");
+	mid=["/***||","MID","-",name,"||***/"].join("");
+	var item;
+	for(var i = 0; i < funcs.length; i++){
+		item=f[i];
+		switch(item.type){
+			case "set":
+				var func = world.installed[name].funcs[world.installed[name].funcs.map(e=>e.owner).indexOf(item.owner)];
+				eval(item.owner+" = "+((typeof func!="undefined")?func.oldFunc:undefined));
+				break;
+			case "replacer":
+				removeInstalled = function(funcStr){
+					var funcArr = funcStr.split(start);
+					var newFuncArr = [];
+					console.log('a');
+					for(var i=0;i<funcArr.length;i++){//for each peice
+						newFuncArr = newFuncArr.concat(funcArr[i].split(mid));
+					}
+					funcArr = newFuncArr;
+					console.log(funcArr);
+					newFuncArr = [];
+					for(var i=0;i<funcArr.length;i++){
+					   if(i%3 !== 0){
+						   newFuncArr = newFuncArr.concat(funcArr[i].split(end));
+					   }else{
+						   newFuncArr = newFuncArr.concat(funcArr[i]);
+					   }
+					}
+					funcArr = newFuncArr;
+					console.log(funcArr);
+					newFuncArr = [];
+					for(var i=0;i<funcArr.length;i++){
+						if((i+1)%3 !== 0){
+							newFuncArr = newFuncArr.concat(funcArr[i]);
+						}
+					}
+					funcArr = newFuncArr;
+					console.log(funcArr);
+					newFuncArr = [];
+					for(var i=0;i<funcArr.length;i++){
+						if(i%2 !== 0){
+							var lines=funcArr[i].split("\n"),
+							newlines=[];
+							for(var j=0;j<lines.length;j++){
+								newlines.push(lines[j].substr(2));
+							}
+							newFuncArr = newFuncArr.concat(newlines.join("\n"));
+						}else{
+							newFuncArr = newFuncArr.concat(funcArr[i]);
+						}
+					}
+					return newFuncArr.join("");
+				}
+				var newfunc = removeInstalled(eval(item.owner+".toString()"));
+				eval(item.owner+" = " + newfunc);
+				break;
+			default:
+				removeInstalled = function(funcStr){
+					var funcArr = funcStr.split(start);
+					var newFuncArr = [];
+					console.log('a');
+					for(var i=0;i<funcArr.length;i++){
+					   newFuncArr = newFuncArr.concat(funcArr[i].split(end));
+					}
+					funcArr = newFuncArr;
+					//console.log(funcArr);
+					newFuncArr = [];
+					for(var i=0;i<funcArr.length;i++){
+						if(i%2 == 0){
+							newFuncArr = newFuncArr.concat(funcArr[i]);
+						}
+					}
+					return newFuncArr.join("");
+				}
+				eval(item.owner+" = " + removeInstalled(eval(item.owner+".toString()")));
+		}
+	}
+	if(typeof world.installed[name]!="undefined"){
+		  world.installed[name]=undefined;
+		}//else{throw new Error('Pack Already Installed');}"})(name);
 }
